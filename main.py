@@ -1,7 +1,9 @@
 import tkinter as tk
+from tkinter import messagebox
 from tkinter.ttk import Combobox
-from convert import *
+from functools import partial
 from combobox_data import *
+from convert import *
 
 data = combobox_data()
 
@@ -35,6 +37,7 @@ currency_2 = tk.StringVar()
 entryCurrency = Combobox(master, values=data, textvariable=currency_2).grid(row=6)
 
 #row7
+convert = partial(convert, value, currency_1, currency_2)
 button = tk.Button(master, text="Convert", command=convert).grid(row=7)
 
 master.mainloop()
